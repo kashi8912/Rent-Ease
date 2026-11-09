@@ -1,7 +1,7 @@
+
 package com.kaankaplan.road_bed.config.filters;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.lang.Strings;
@@ -34,7 +34,7 @@ public class JwtVerifierFilter extends OncePerRequestFilter {
 
         String token = request.getHeader("Authorization");
 
-        if (Strings.hasText(token) && token.startsWith("Bearer ")){
+        if (Strings.hasText(token) && token.startsWith("Bearer ")) {
             token = token.replace("Bearer ", "");
 
             try {
@@ -43,14 +43,20 @@ public class JwtVerifierFilter extends OncePerRequestFilter {
                         .parseClaimsJws(token).getBody();
 
                 String issuer = claims.getIssuer();
-                List<Map<String, String>> authorities = (List<Map<String, String>>) claims.get("authority");
-                List<SimpleGrantedAuthority> grantedAuthorities = authorities.stream().map(authority ->
-                        new SimpleGrantedAuthority("AUHTORITY_" + authority.get("authority"))
-                ).toList();
+                List<Map<String, String>> authorities =
+                        (List<Map<String, String>>) claims.get("authority");
 
-                Authentication authentication = new UsernamePasswordAuthenticationToken(issuer, null, grantedAuthorities);
+                List<SimpleGrantedAuthority> grantedAuthorities = authorities.stream()
+                        .map(authority -> new SimpleGrantedAuthority(
+                                "ROLE_" + authority.get("authority")))
+                        .toList();
+
+                Authentication authentication =
+                        new UsernamePasswordAuthenticationToken(
+                                issuer, null, grantedAuthorities);
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+
             } catch (JwtException e) {
                 throw new IllegalStateException(e);
             }
@@ -58,5 +64,4 @@ public class JwtVerifierFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
-
 }

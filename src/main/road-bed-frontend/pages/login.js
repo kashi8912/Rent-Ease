@@ -75,7 +75,7 @@ function Login() {
                 Login
               </button>
             </div>
-            <p className="pt-6 pb-1 text-center text-gray-500">You don't have an account? </p>
+            <p className="pt-6 pb-1 text-center text-gray-500">You don&apos;t have an account? </p>
             <p className="mb-2 text-center">
               <Link href="/register">
                 <span className="font-semibold underline decoration-2 decoration-teal-600 cursor-pointer">

@@ -35,3 +35,66 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# ==========================================
+# ROADBED LOCAL DATA AND SECRETS
+# ==========================================
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Local MongoDB databases and backups
+data/
+data-backup/
+data-old/
+
+# Local test payload
+house.json
+
+# Build output
+target/
+build/
+
+# Logs
+*.log
+
+# IDE files
+.idea/
+.vscode/
+
+# ==========================================
+# ROADBED GENERATED FILES AND SECRETS
+# ==========================================
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Local MongoDB data
+data/
+data-backup/
+data-old/
+
+# Dependencies and build output
+**/node_modules/
+**/.next/
+target/
+**/target/
+build/
+**/build/
+coverage/
+
+# Temporary files and logs
+*.log
+*.backup
+*.backup.*
+
+# Operating system files
+.DS_Store
+Thumbs.db

@@ -1,3 +1,4 @@
+
 package com.kaankaplan.road_bed.config;
 
 import com.kaankaplan.road_bed.config.filters.JwtVerifierFilter;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,9 +20,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
 @Configuration
 @EnableGlobalAuthentication
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
@@ -46,15 +48,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/error").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET,  "/cities/**").permitAll()
-                .requestMatchers(HttpMethod.GET,  "/categories/**").permitAll()
-                .requestMatchers(HttpMethod.POST,  "/categories/**").permitAll()
-                .requestMatchers(HttpMethod.GET,  "/houses/**").permitAll()
-                .requestMatchers(HttpMethod.GET,  "/tenants/**").permitAll()
-                .requestMatchers(HttpMethod.GET,  "/users/**").permitAll()
-                .requestMatchers(HttpMethod.POST,  "/cities/**").permitAll()
-                .requestMatchers(HttpMethod.POST,  "/roles/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/cities/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/categories/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/houses/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/tenants/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/cities/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/roles/**").permitAll()
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
@@ -75,7 +78,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer(){
+    public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry corsRegistry) {

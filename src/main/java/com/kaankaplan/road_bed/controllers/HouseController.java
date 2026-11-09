@@ -42,7 +42,7 @@ public class HouseController {
         return houseService.getHouseByHouseId(houseId);
     }
 
-    @PreAuthorize("hasAnyRole('AUTHORITY_TENANT')")
+    @PreAuthorize("hasAnyRole('TENANT')")
     @PostMapping(path="save")
     public House saveHouse(@RequestPart("house") House house,
                            @RequestPart("multipartFile") List<MultipartFile> multipartFileList){

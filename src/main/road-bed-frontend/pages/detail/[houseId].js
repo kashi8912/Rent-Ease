@@ -60,14 +60,15 @@ function HouseDetail({ house, firstImage, secondImage, thirdImage, tenant }) {
   };
 
   const handleSelectDate = (ranges) => {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
+  setStartDate(ranges.selection.startDate);
+  setEndDate(ranges.selection.endDate);
 
-    let difference =
-      ranges.selection.endDate.getTime() - ranges.selection.startDate.getTime();
-    let day = Math.ceil(difference / (1000 * 3600 * 24)) + 1;
-    setSelectedDayCount(day);
-  };
+  let difference =
+    ranges.selection.endDate.getTime() - ranges.selection.startDate.getTime();
+
+  let day = Math.ceil(difference / (1000 * 3600 * 24));
+  setSelectedDayCount(day);
+};
 
   const closeModal = () => {
     setIsOpen(false);
@@ -121,9 +122,9 @@ function HouseDetail({ house, firstImage, secondImage, thirdImage, tenant }) {
   };
 
   const calculateDaysBetweenDates = () => {
-    const difference = endDate.getTime() - startDate.getTime();
-    return Math.ceil(difference / (1000 * 3600 * 24)) + 1;
-  };
+  const difference = endDate.getTime() - startDate.getTime();
+  return Math.ceil(difference / (1000 * 3600 * 24));
+};
 
   const goToPayment = () => {
     if (session) {
