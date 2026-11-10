@@ -6,9 +6,9 @@ import com.kaankaplan.road_bed.dtos.LoginRequest;
 import com.kaankaplan.road_bed.dtos.LoginResponse;
 import com.kaankaplan.road_bed.dtos.RefreshRequest;
 import com.kaankaplan.road_bed.dtos.TenantRegisterRequest;
-import com.kaankaplan.road_bed.entities.Tenant;
+import com.kaankaplan.road_bed.dtos.TenantResponse;
+import com.kaankaplan.road_bed.dtos.TenantResponseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,16 +17,26 @@ public class AuthController {
 
     private final AuthService authService;
     private final TenantService tenantService;
+    private final TenantResponseMapper tenantResponseMapper;
 
     @Autowired
-    public AuthController(AuthService authService, TenantService tenantService) {
+    public AuthController(
+            AuthService authService,
+            TenantService tenantService,
+            TenantResponseMapper tenantResponseMapper
+    ) {
         this.authService = authService;
         this.tenantService = tenantService;
+        this.tenantResponseMapper = tenantResponseMapper;
     }
 
     @PostMapping("register")
-    public Tenant register(@RequestBody TenantRegisterRequest tenantRegisterRequest) {
-        return tenantService.saveTenant(tenantRegisterRequest);
+    public TenantResponse register(
+            @RequestBody TenantRegisterRequest tenantRegisterRequest
+    ) {
+        return tenantResponseMapper.toResponse(
+                tenantService.saveTenant(tenantRegisterRequest)
+        );
     }
 
     @PostMapping("login")
