@@ -100,23 +100,23 @@ Tailwind CSS was used for UI and Responsive design of the project.
 
 ## UI of Project
 <h4>Main page</h4>
-<img src="app_images/main_page.jpg" />
-<img src="app_images/main_page2.jpg" />
+<img src="screenshots/homepage_top.jpg" />
+<img src="screenshots/homepage_host_cities_footer.jpg" />
 
 <h4>Searched Houses</h4>
-<img  src="app_images/search.jpg" />
+<img  src="screenshots/search_results.jpg" />
 
 <h4>Filter Houses in the Same Category</h4>
-<img src="app_images/small_flats.jpg" />
+<img src="screenshots/small_flats.jpg" />
 
 <h4>House Detail Page</h4>
-<img src="app_images/detail.jpg" />
+<img src="screenshots/detail.jpg" />
 
 <h4>Payment Page</h4>
-<img src="app_images/payment.jpg" />
+<img src="screenshots/payment.jpg" />
 
 <h4>Profile Page</h4>
-<img src="app_images/profile.jpg" />
+<img src="screenshots/profile.jpg" />
 
 <h4>Login Page</h4>
-<img src="app_images/login.jpg" />
+<img src="screenshots/login.jpg" />
