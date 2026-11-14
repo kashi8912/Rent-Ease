@@ -1,9 +1,9 @@
-# Road Bed Full Stack Project
-Road Bed project is a full stack web application project and it was created with Java Spring Boot and Next.js.
+# Rent Ease Full Stack Project
+Rent Ease project is a full stack web application project and it was created with Java Spring Boot and Next.js.
 Also, frontend design of project was designed with Tailwind CSS.
 
 ## Brief Description of the Project
-Road Bed is a project where people can rent a house on a daily basis. Also, people can start earning income
+Rent Ease is a project where people can rent a house on a daily basis. Also, people can start earning income
 by renting out their homes and they can search for homes in a specific city and between specific dates.
 User who wants to rent a house or add a house to his favourites, needs to create an account.
 People can view the details of houses. For example, images of house, price, empty dates of house for reservation,
@@ -74,7 +74,7 @@ Tailwind CSS was used for UI and Responsive design of the project.
 ## How can I use this project? 
 <p> 1. Clone or Download zip folder of this repository </p> 
     
-    git clone https://github.com/VonHumbolt/RoadBedProject.git
+    git clone https://github.com/kashi8912/RentEase.git
 
 <p> 2. Create <i> .env </i> file in root folder and paste your cloudinary configuration url. 
     .env file should look like this:
